@@ -12,13 +12,13 @@ const postMiddleware = (req, res, next) => {
     avgDailyIncomePopulation
   } = region;
 
-  if(!region || !periodType || !reportedCases || !population || !totalHospitalBeds || !avgDailyIncomeInUSD || !avgDailyIncomePopulation) {
+  if (!region || !periodType || !reportedCases || !population || !totalHospitalBeds || !avgDailyIncomeInUSD || !avgDailyIncomePopulation) {
     return res.status(400).json({
       message: 'values are required'
     });
   }
 
-  next();
-}
+  return next();
+};
 
 module.exports = postMiddleware;
