@@ -26,19 +26,10 @@ describe('Estimate', () => {
         .end((err, res) => {
             res.should.be.a('object');
             res.should.have.status(201);
-            res.should.have.property(data);
-            res.should.have.property(impact);
-            res.should.have.property(severeImpact);
+            res.body.should.have.property('data');
+            res.body.should.have.property('impact');
+            res.body.should.have.property('severeImpact');
         })
         done();
     });
-
-    it('should get req and res logs', () => {
-        chai.request(app)
-        .get('/api/v1/on-covid-19/logs')
-        .end((err, res) => {
-            res.should.be.a('object');
-            res.should.have.status(200);
-        });
-    })
 })
