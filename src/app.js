@@ -20,8 +20,8 @@ app.use(morgan('dev'));
 
 // log all requests to access.log
 app.use(morgan('tiny', {
-    stream: fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
-  }))
+  stream: fs.createWriteStream(path.join(__dirname, 'logs.log'), { flags: 'a' })
+}));
 
 const port = process.env.PORT || 8000;
 
@@ -31,20 +31,18 @@ app.use('/api/v1/', getLogs);
 
 // welcome route
 app.get('/', (req, res) => {
-    res.status(200).json({
-        message: 'welcome to the api'
-    });
+  res.status(200).json({
+    message: 'welcome to the api'
+  });
 });
 
 // catch wrong route
 app.use('*', (req, res) => {
-    res.status(404).json({
-        message: 'route does not exist'
-    });
+  res.status(404).json({
+    message: 'route does not exist'
+  });
 });
 
-app.listen(port, () => {
-    console.log(`app is running on port ${port}`)
-});
+app.listen(port);
 
 export default app;
