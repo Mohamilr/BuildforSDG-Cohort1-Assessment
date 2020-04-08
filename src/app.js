@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import morgan from 'morgan';
 
 dotenv.config();
 
@@ -8,7 +9,10 @@ const app = express();
 
 // configure body parser
 app.use(bodyParser.json());
-
+// morgan
+app.use(morgan('dev', () => {
+    console.log(method);
+}))
 const port = process.env.PORT || 8000;
 
 // welcome route
@@ -27,4 +31,6 @@ app.use('*', (req, res) => {
 
 app.listen(port, () => {
     console.log(`app is running on port ${port}`)
-})
+});
+
+export default app;
