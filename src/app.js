@@ -4,10 +4,15 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
 
 // import routes
 const postEstimate = require('./route/postEstimate.route');
 const getLogs = require('./route/getLogs.route');
+
+// import swagger file
+const apiDocs = require('../swagger.json');
 
 dotenv.config();
 
@@ -15,6 +20,10 @@ const app = express();
 
 // configure body parser
 app.use(bodyParser.json());
+
+// cors
+app.use(cors());
+
 // morgan
 app.use(morgan('dev'));
 
@@ -28,6 +37,8 @@ const port = process.env.PORT || 8000;
 // routes
 app.use('/api/v1/', postEstimate);
 app.use('/api/v1/', getLogs);
+// api docs
+app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(apiDocs))
 
 // welcome route
 app.get('/', (req, res) => {

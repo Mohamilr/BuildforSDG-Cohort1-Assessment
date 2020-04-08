@@ -1,13 +1,13 @@
 const estimator = require('../estimator');
 
 const postEstimate = (req, res) => {
-  const { 
+  const {
     region,
     periodType,
     timeToElapse,
     reportedCases,
     population,
-    totalHospitalBeds 
+    totalHospitalBeds
   } = req.body;
 
   const {
