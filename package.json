@@ -5,14 +5,19 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "babel src public -d dist",
-    "start": "babel-node src/app.js",
+    "start": "node src/app.js",
     "start:dev": "nodemon --exec babel-node src/app.js",
-    "test": "nyc mocha --require @babel/register --require @babel/polyfill src/test --exit",
+    "test": "nyc mocha src/test --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./src/"
   },
   "dependencies": {
+    "@babel/node": "^7.8.7",
+    "@babel/core": "^7.9.0",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/register": "^7.9.0",
+    "babel-jest": "^25.2.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -21,12 +26,6 @@
     "on-covid-19": "^0.1.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/node": "^7.8.7",
-    "@babel/polyfill": "^7.8.7",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/register": "^7.9.0",
-    "babel-jest": "^25.2.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "coveralls": "^3.0.11",

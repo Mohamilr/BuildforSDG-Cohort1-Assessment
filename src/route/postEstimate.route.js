@@ -1,8 +1,8 @@
-import { Router } from 'express';
-import postEstimate from '../controller/postEstimate';
+const { Router } = require('express');
+const postEstimate = require('../controller/postEstimate');
 
 const router = Router();
 
 router.post('/on-covid-19', postEstimate);
 
-export default router;
+module.exports = router;
