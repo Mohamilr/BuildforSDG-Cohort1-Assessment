@@ -3,6 +3,9 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 
+// import routes
+import postEstimate from './route/postEstimate.route';
+
 dotenv.config();
 
 const app = express();
@@ -13,7 +16,10 @@ app.use(bodyParser.json());
 app.use(morgan('dev', () => {
     console.log(method);
 }))
+
 const port = process.env.PORT || 8000;
+// routes
+app.use('/api/v1/', postEstimate);
 
 // welcome route
 app.get('/', (req, res) => {

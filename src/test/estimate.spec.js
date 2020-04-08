@@ -26,9 +26,9 @@ describe('Estimate', () => {
         .end((err, res) => {
             res.should.be.a('object');
             res.should.have.status(201);
-            res.should.have.property(data);
-            res.should.have.property(impact);
-            res.should.have.property(severeImpact);
+            res.body.should.have.property('data');
+            res.body.should.have.property('impact');
+            res.body.should.have.property('severeImpact');
         })
         done();
     });
