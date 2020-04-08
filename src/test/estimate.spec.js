@@ -32,13 +32,4 @@ describe('Estimate', () => {
         })
         done();
     });
-
-    it('should get req and res logs', () => {
-        chai.request(app)
-        .get('/api/v1/on-covid-19/logs')
-        .end((err, res) => {
-            res.should.be.a('object');
-            res.should.have.status(200);
-        });
-    })
 })
