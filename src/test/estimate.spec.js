@@ -30,7 +30,7 @@ describe('Estimate', () => {
         res.body.should.have.property('data');
         res.body.should.have.property('impact');
         res.body.should.have.property('severeImpact');
-      })
+      });
     done();
   });
 });
