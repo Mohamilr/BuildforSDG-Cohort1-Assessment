@@ -2,56 +2,69 @@ const covid19ImpactEstimator = (data) => {
   const impact = {};
   const severeImpact = {};
 
-  // 
+  // data
+  const { 
+    region,
+    periodType,
+    reportedCases,
+    totalHospitalBeds 
+  } = data;
+
+  const {
+    avgDailyIncomeInUSD,
+    avgDailyIncomePopulation
+  } = region;
+
+  // compute days
   let days;
-  if (/weeks/i.test(data.periodType)) {
-    let value = data.periodType.split(' ');
-    days = parseInt(value[0]) * 7;
+  if (/weeks/i.test(periodType)) {
+    const value = periodType.split(' ');
+    days = parseInt(value[0], 10) * 7;
   }
-  if (/months/i.test(data.periodType)) {
-    let value = data.periodType.split(' ');
-    days = parseInt(value[0]) * 30;
+  if (/months/i.test(periodType)) {
+    const value = periodType.split(' ');
+    days = parseInt(value[0], 10) * 30;
   }
-  if (/days/i.test(data.periodType)) {
-    let value = data.periodType.split(' ');
-    days = parseInt(value[0]);
+  if (/days/i.test(periodType)) {
+    const value = periodType.split(' ');
+    days = parseInt(value[0], 10);
   }
 
-  const requestedTime = Math.floor(days / 3);  
-  
-  impact.currentlyInfected = data.reportedCases * 10;
+  const requestedTime = Math.floor(days / 3);
+
+  impact.currentlyInfected = reportedCases * 10;
   //
-  severeImpact.currentlyInfected = data.reportedCases * 50;
-  ////
+  severeImpact.currentlyInfected = reportedCases * 50;
+  // new task
   impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** requestedTime);
   //
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** requestedTime);
-  ////
+  // new task
   impact.severeCasesByRequestedTime = (15 / 100) * impact.infectionsByRequestedTime;
   //
   severeImpact.severeCasesByRequestedTime = (15 / 100) * severeImpact.infectionsByRequestedTime;
-  ////
-  impact.hospitalBedsByRequestedTime = (35 / 100) * data.totalHospitalBeds - impact.severeCasesByRequestedTime;
+  // new task
+  impact.hospitalBedsByRequestedTime = (35 / 100) * totalHospitalBeds - impact.severeCasesByRequestedTime;
   //
-  severeImpact.hospitalBedsByRequestedTime = (35 / 100) * data.totalHospitalBeds - severeImpact.severeCasesByRequestedTime;
-  ////
+  severeImpact.hospitalBedsByRequestedTime = (35 / 100) * totalHospitalBeds - severeImpact.severeCasesByRequestedTime;
+  // new task
   impact.casesForICUByRequestedTime = (5 / 100) * impact.infectionsByRequestedTime;
   //
   severeImpact.casesForICUByRequestedTime = (5 / 100) * severeImpact.infectionsByRequestedTime;
-  ////
+  // new task
   impact.casesForVentilatorsByRequestedTime = (2 / 100) * impact.infectionsByRequestedTime;
   //
   severeImpact.casesForVentilatorsByRequestedTime = (2 / 100) * severeImpact.infectionsByRequestedTime;
-  ////
-  impact.dollarsInFlight = impact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * 30;
+  // new task
+  impact.dollarsInFlight = impact.infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
   //
-  severeImpact.dollarsInFlight = severeImpact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * 30;
+  severeImpact.dollarsInFlight = severeImpact.infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
 
   return {
     data,
     impact,
-    severeImpact,
-  }
+    severeImpact
+  };
 };
 
-export default covid19ImpactEstimator;
+module.exports = covid19ImpactEstimator;
