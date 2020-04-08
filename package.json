@@ -6,6 +6,8 @@
   "private": false,
   "scripts": {
     "start:dev": "nodemon --exec babel-node src/app.js",
+    "test": "nyc mocha --require @babel/register --require @babel/polyfill src/test --exit",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./src/"
   },
   "dependencies": {

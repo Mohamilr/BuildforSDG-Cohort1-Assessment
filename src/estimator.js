@@ -4,15 +4,15 @@ const covid19ImpactEstimator = (data) => {
 
   // 
   let days;
-  if (/weeks/.test(data.periodType)) {
+  if (/weeks/i.test(data.periodType)) {
     let value = data.periodType.split(' ');
     days = parseInt(value[0]) * 7;
   }
-  if (/months/.test(data.periodType)) {
+  if (/months/i.test(data.periodType)) {
     let value = data.periodType.split(' ');
     days = parseInt(value[0]) * 30;
   }
-  if (/days/.test(data.periodType)) {
+  if (/days/i.test(data.periodType)) {
     let value = data.periodType.split(' ');
     days = parseInt(value[0]);
   }
