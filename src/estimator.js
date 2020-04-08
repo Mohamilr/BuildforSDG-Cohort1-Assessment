@@ -3,11 +3,11 @@ const covid19ImpactEstimator = (data) => {
   const severeImpact = {};
 
   // data
-  const { 
+  const {
     region,
     periodType,
     reportedCases,
-    totalHospitalBeds 
+    totalHospitalBeds
   } = data;
 
   const {
@@ -44,21 +44,37 @@ const covid19ImpactEstimator = (data) => {
   //
   severeImpact.severeCasesByRequestedTime = (15 / 100) * severeImpact.infectionsByRequestedTime;
   // new task
-  impact.hospitalBedsByRequestedTime = (35 / 100) * totalHospitalBeds - impact.severeCasesByRequestedTime;
+  impact.hospitalBedsByRequestedTime = (35 / 100) * totalHospitalBeds - impact[
+    'severeCasesByRequestedTime'
+  ];
   //
-  severeImpact.hospitalBedsByRequestedTime = (35 / 100) * totalHospitalBeds - severeImpact.severeCasesByRequestedTime;
+  severeImpact.hospitalBedsByRequestedTime = (35 / 100) * totalHospitalBeds - severeImpact[
+    'severeCasesByRequestedTime'
+  ];
   // new task
-  impact.casesForICUByRequestedTime = (5 / 100) * impact.infectionsByRequestedTime;
+  impact.casesForICUByRequestedTime = (5 / 100) * impact[
+    'infectionsByRequestedTime'
+  ];
   //
-  severeImpact.casesForICUByRequestedTime = (5 / 100) * severeImpact.infectionsByRequestedTime;
+  severeImpact.casesForICUByRequestedTime = (5 / 100) * severeImpact[
+    'infectionsByRequestedTime'
+  ];
   // new task
-  impact.casesForVentilatorsByRequestedTime = (2 / 100) * impact.infectionsByRequestedTime;
+  impact.casesForVentilatorsByRequestedTime = (2 / 100) * impact[
+    'infectionsByRequestedTime'
+  ];
   //
-  severeImpact.casesForVentilatorsByRequestedTime = (2 / 100) * severeImpact.infectionsByRequestedTime;
+  severeImpact.casesForVentilatorsByRequestedTime = (2 / 100) * severeImpact[
+    'infectionsByRequestedTime'
+  ];
   // new task
-  impact.dollarsInFlight = impact.infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
+  impact.dollarsInFlight = impact[
+    'infectionsByRequestedTime'
+  ] * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
   //
-  severeImpact.dollarsInFlight = severeImpact.infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
+  severeImpact.dollarsInFlight = severeImpact[
+    'infectionsByRequestedTime'
+  ] * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
 
   return {
     data,
