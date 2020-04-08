@@ -1,4 +1,4 @@
-import estimator from '../estimator';
+const estimator = require('../estimator');
 
 const postEstimate = (req, res) => {
   const { 
@@ -40,4 +40,4 @@ const postEstimate = (req, res) => {
   });
 };
 
-export default postEstimate;
+module.exports = postEstimate;

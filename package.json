@@ -5,12 +5,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel -d ./build ./src -s",
-    "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./build/app.js",
+    "start": "node src/app.js",
     "start:dev": "nodemon --exec babel-node src/app.js",
-    "test": "nyc mocha --require @babel/register --require @babel/polyfill src/test --exit",
+    "test": "nyc mocha src/test --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./src/"
   },

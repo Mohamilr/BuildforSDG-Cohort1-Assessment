@@ -1,13 +1,13 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import morgan from 'morgan';
-import path from 'path';
-import fs from 'fs';
+const express = require('express');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const morgan = require('morgan');
+const path = require('path');
+const fs = require('fs');
 
 // import routes
-import postEstimate from './route/postEstimate.route';
-import getLogs from './route/getLogs.route';
+const postEstimate = require('./route/postEstimate.route');
+const getLogs = require('./route/getLogs.route');
 
 dotenv.config();
 
@@ -45,4 +45,4 @@ app.use('*', (req, res) => {
 
 app.listen(port);
 
-export default app;
+module.exports = app;
