@@ -38,7 +38,7 @@ const port = process.env.PORT || 8000;
 app.use('/api/v1/', postEstimate);
 app.use('/api/v1/', getLogs);
 // api docs
-app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(apiDocs))
+app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(apiDocs));
 
 // welcome route
 app.get('/', (req, res) => {
