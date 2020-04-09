@@ -20,6 +20,7 @@ const app = express();
 
 // configure body parser
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // cors
 app.use(cors());
