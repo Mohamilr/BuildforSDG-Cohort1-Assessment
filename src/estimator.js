@@ -33,7 +33,7 @@ const covid19ImpactEstimator = (data) => {
   impact.currentlyInfected = reportedCases * 10;
   //
   severeImpact.currentlyInfected = reportedCases * 50;
-  // new task
+  // challenge 1
   impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** requestedTime);
   //
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** requestedTime);
@@ -41,22 +41,30 @@ const covid19ImpactEstimator = (data) => {
   impact.severeCasesByRequestedTime = (15 / 100) * impact.infectionsByRequestedTime;
   //
   severeImpact.severeCasesByRequestedTime = (15 / 100) * severeImpact.infectionsByRequestedTime;
-  // new task
-  impact.hospitalBedsByRequestedTime = (35 / 100) * totalHospitalBeds - impact.severeCasesByRequestedTime;
+  // challenge 2
+  const impactbedValue = (35 / 100) * totalHospitalBeds - impact.severeCasesByRequestedTime;
+  impact.hospitalBedsByRequestedTime = Math.floor(impactbedValue);
   //
-  severeImpact.hospitalBedsByRequestedTime = (35 / 100) * totalHospitalBeds - severeImpact.severeCasesByRequestedTime;
-  // new task
-  impact.casesForICUByRequestedTime = (5 / 100) * impact.infectionsByRequestedTime;
+  const severeImpactbedValue = (35 / 100) * totalHospitalBeds - severeImpact.severeCasesByRequestedTime;
+  severeImpact.hospitalBedsByRequestedTime = Math.floor(severeImpactbedValue);
+  // challenge 3
+  const impactICU = (5 / 100) * impact.infectionsByRequestedTime;
+  impact.casesForICUByRequestedTime = Math.floor(impactICU);
   //
-  severeImpact.casesForICUByRequestedTime = (5 / 100) * severeImpact.infectionsByRequestedTime;
+  const severeImpactICU = (5 / 100) * severeImpact.infectionsByRequestedTime;
+  severeImpact.casesForICUByRequestedTime = Math.floor(severeImpactICU);
   // new task
-  impact.casesForVentilatorsByRequestedTime = (2 / 100) * impact.infectionsByRequestedTime;
+  const impactVentilators = (2 / 100) * impact.infectionsByRequestedTime;
+  impact.casesForVentilatorsByRequestedTime = Math.floor(impactVentilators);
   //
-  severeImpact.casesForVentilatorsByRequestedTime = (2 / 100) * severeImpact.infectionsByRequestedTime;
+  const severeImpactVentilators = (2 / 100) * severeImpact.infectionsByRequestedTime;
+  severeImpact.casesForVentilatorsByRequestedTime = Math.floor(severeImpactVentilators);
   // new task
-  impact.dollarsInFlight = impact.infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
+  const impactDollars = impact.infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
+  impact.dollarsInFlight = Math.floor(impactDollars);
   //
-  severeImpact.dollarsInFlight = severeImpact.infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
+  const severeImpactDollars = severeImpact.infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
+  severeImpact.dollarsInFlight = Math.floor(severeImpactDollars);
 
   return {
     data,
