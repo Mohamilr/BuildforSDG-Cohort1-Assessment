@@ -49,16 +49,16 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.hospitalBedsByRequestedTime = Math.ceil(severeImpactbedValue);
   // challenge 3
   const impactICU = (5 / 100) * impact.infectionsByRequestedTime;
-  impact.casesForICUByRequestedTime = impactICU;
+  impact.casesForICUByRequestedTime = Math.floor(impactICU);
   //
   const severeImpactICU = (5 / 100) * severeImpact.infectionsByRequestedTime;
-  severeImpact.casesForICUByRequestedTime = severeImpactICU;
+  severeImpact.casesForICUByRequestedTime = Math.floor(severeImpactICU);
   // new task
   const impactVentilators = (2 / 100) * impact.infectionsByRequestedTime;
-  impact.casesForVentilatorsByRequestedTime = impactVentilators;
+  impact.casesForVentilatorsByRequestedTime = Math.floor(impactVentilators);
   //
   const severeImpactVentilators = (2 / 100) * severeImpact.infectionsByRequestedTime;
-  severeImpact.casesForVentilatorsByRequestedTime = severeImpactVentilators;
+  severeImpact.casesForVentilatorsByRequestedTime = Math.floor(severeImpactVentilators);
   // new task
   const impactDollars = impact.infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * days;
   impact.dollarsInFlight = Math.floor(impactDollars);
