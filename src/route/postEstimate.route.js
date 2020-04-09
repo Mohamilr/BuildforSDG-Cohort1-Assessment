@@ -8,7 +8,7 @@ const options = {
   explicitRoot: false,
   explicitArray: false,
   normalizeTags: false,
-  mergeAttrs: true,
+  mergeAttrs: true
 };
 
 const router = Router();
