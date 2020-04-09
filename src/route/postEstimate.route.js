@@ -4,6 +4,6 @@ const postMiddleware = require('../middleware/post.middleware');
 
 const router = Router();
 
-router.post('/on-covid-19', postMiddleware, postEstimate);
+router.post('/on-covid-19', postEstimate);
 
 module.exports = router;
