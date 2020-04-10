@@ -13,7 +13,7 @@ const options = {
 
 const router = Router();
 
-router.post('/on-covid-19', postEstimate);
+router.post('/on-covid-19/json', postEstimate);
 router.post('/on-covid-19/xml', xmlParser(options), postEstimate);
 
 module.exports = router;
