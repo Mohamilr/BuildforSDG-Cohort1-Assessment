@@ -22,7 +22,7 @@ describe('Estimate', () => {
 
   it('should post data for estimate', (done) => {
     chai.request(app)
-      .post('/api/v1/on-covid-19')
+      .post('/api/v1/on-covid-19/json')
       .send(data)
       .end((err, res) => {
         res.should.be.a('object');

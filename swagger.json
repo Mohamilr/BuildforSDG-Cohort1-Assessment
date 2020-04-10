@@ -21,7 +21,7 @@
         "application/json"
     ],
     "paths": {
-        "/on-covid-19": {
+        "/on-covid-19/json": {
             "post": {
                 "description": "post covid-19 estimate data",
                 "summary": "post estimate",
