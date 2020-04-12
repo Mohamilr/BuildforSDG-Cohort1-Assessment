@@ -37,9 +37,11 @@ const postEstimate = (req, res) => {
   const estimate = estimator(data);
 
   if (req.headers['content-type'] === 'application/xml') {
+    res.headers['content-type'] = 'application/xml';
     return res.status(201).send(builder.buildObject({ estimate }));
   }
 
+  res.headers['content-type'] = 'application/json';
   return res.status(201).json({
     data: estimate.data,
     impact: estimate.impact,
