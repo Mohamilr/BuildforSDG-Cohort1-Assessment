@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Mohamilr/BuildforSDG-Cohort1-Assessment.svg?branch=master)](https://travis-ci.com/Mohamilr/BuildforSDG-Cohort1-Assessment)
+[![Coverage Status](https://coveralls.io/repos/github/Mohamilr/BuildforSDG-Cohort1-Assessment/badge.svg?branch=master)](https://coveralls.io/github/Mohamilr/BuildforSDG-Cohort1-Assessment?branch=master)
 # #BuildForSDG Cohort-1 JavaScript Assessment
 
 > Build an overly simplified COVID-19 infection impact estimator

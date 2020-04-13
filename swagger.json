@@ -1,0 +1,157 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "on-covid-19",
+        "description": "covid estimator",
+        "contact": {
+            "email": "ibrahimdamy7@gmail.com"
+        }
+    },
+    "host": "sdgs-covid-19-estimator.herokuapp.com",
+    "basePath": "/api/v1",
+    "securityDefinitions": {},
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/on-covid-19/json": {
+            "post": {
+                "description": "post covid-19 estimate data",
+                "summary": "post estimate",
+                "tags": [
+                    "covid-19"
+                ],
+                "operationId": "",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/post_estimate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "estmate posted successfully",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "values are required",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/on-covid-19/logs": {
+            "get": {
+                "description": "get logs of request and response",
+                "summary": "get logs",
+                "tags": [
+                    "covid-19"
+                ],
+                "operationId": "",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                   
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "headers": {}
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "post_estimate": {
+            "title": "estimate",
+            "example": {
+                "region": {
+                    "name": "Africa",
+                    "avgAg": 19.7,
+                    "avgDailyIncomeInUSD": 5,
+                    "avgDailyIncomePopulation": 0.71
+                },
+                "periodType": "3 moNTHS",
+                "timeToElapse": 58,
+                "reportedCases": 674,
+                "population": 66622705,
+                "totalHospitalBeds": 1380614
+            },
+            "type": "object",
+            "properties": {
+                "region": {
+                    "type": "object"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "avgAg": {
+                    "type": "integer"
+                },
+                "avgDailyIncomeInUSD": {
+                    "type": "integer"
+                },
+                "avgDailyIncomePopulation": {
+                    "type": "integer"
+                },
+                "periodType": {
+                    "type": "string"
+                },
+                "timeToElapse": {
+                    "type": "integer"
+                },
+                "reportedCases": {
+                    "type": "integer"
+                },
+                "population": {
+                    "type": "integer"
+                },
+                "totalHospitalBeds": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "region",
+                "name",
+                "avgDailyIncomeInUSD",
+                "avgDailyIncomePopulation",
+                "periodType",
+                "reportedCases",
+                "population",
+                "totalHospitalBeds"
+            ]
+        }
+    },
+    "tags": [
+        {
+            "name": "covid-19",
+            "description": "covid 19 api"
+        }
+    ]
+}
