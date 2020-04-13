@@ -30,7 +30,7 @@ app.use(morgan('dev'));
 
 // log all requests to access.log
 app.use(morgan('tiny', {
-  stream: fs.createWriteStream(path.join(__dirname, 'logs.log'), { flags: 'a' })
+  stream: fs.createWriteStream(path.join(__dirname, 'logs.txt'), { flags: 'a' })
 }));
 
 const port = process.env.PORT || 8000;
