@@ -52,6 +52,6 @@ class postMiddleware {
 
     return next();
   }
-};
+}
 
 module.exports = postMiddleware;
