@@ -81,6 +81,6 @@ class postEstimate {
     res.type('application/xml');
     return res.status(201).send(builder.buildObject({ estimate }));
   }
-};
+}
 
 module.exports = postEstimate;
