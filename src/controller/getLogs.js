@@ -1,8 +1,10 @@
 const path = require('path');
+const fs = require('fs');
 
-const getLogs = (req, res) => {
+const getLogs = async (req, res) => {
+  const log = fs.readFileSync(path.join(__dirname, '../logs.log'));
   res.type('text/plain');
-  res.status(200).download(path.join(__dirname, '../logs.log'), 'requestslog.txt');
+  res.status(200).send(log);
 };
 
 module.exports = getLogs;
